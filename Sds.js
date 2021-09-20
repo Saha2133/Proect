@@ -34,7 +34,6 @@ function createCardTitle(card, parent, toggleEdit) {
     let titleElement = document.createElement('h3');
     titleElement.className = "h3asd";
     titleElement.innerText = title;
-    titleElement.style.display = "block";
     conteiner.appendChild(titleElement);
 
     let input = document.createElement('input');

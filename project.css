@@ -1,5 +1,5 @@
 body{
-    background: linear-gradient(skyblue,rgb(226, 207, 207) ) fixed;
+    background: linear-gradient(rgb(129, 202, 231),rgb(226, 207, 207) ) fixed;
 }
 
 .search-box{
@@ -78,22 +78,20 @@ body{
     background: #ced6a3c5;
     color: #363636;
     text-decoration: beige;
-    box-shadow: rgba(0,0,0, 0.19) 0 0 8px 0; 
+    box-shadow: rgba(34, 26, 26, 0.521) 0 0 8px 0; 
     border-radius: 4px;
 
 }
 .card:hover{
     transform: scale(1.07);
+    box-shadow: rgba(34, 26, 26, 0.521) 0 0 8px 0; 
 }
 .card1{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    /* height: min-content; */
-    width: 320px;
-    height: 110px;
+    pointer-events: auto;
+    height: min-content;
+    min-width: 320px;
+    min-height: 110px;
     position: relative;
-    border-radius: 4px;
     margin-bottom: 20px;
     padding-bottom: 30px;
 /*    background: black;*/
@@ -102,12 +100,12 @@ body{
     /* text-decoration: beige; */
     box-shadow: rgba(0,0,0, 0.19) 0 0 18px 0; 
     border-radius: 4px;
-    opacity: 0.4;
-    transition: .5s opacity;
+    /* opacity: 0.4; */
 }
 .card1:hover{
     opacity: 1;
     transition: .8s opacity;
+    box-shadow: rgba(15, 10, 10, 0.603) 0 0 8px 0; 
 }
 .cardPlus{
     border: none;
@@ -116,7 +114,7 @@ body{
     height: 110px;
 }
 
-@media (max-width: 600px){
+@media (max-width: 700px){
     .card{
         width: 100%;
     }
@@ -129,11 +127,9 @@ body{
     }
 }
 
-.card span {
-    display: block;
-}
-.card-summary, .card1-summary{
+.card-summary{
     padding: 3% 6% 3% 6%;
+    word-wrap:break-word;
 }
 .card .card-title{
     background: rgba(104, 155, 210, 0.562);
@@ -146,8 +142,22 @@ body{
     /* flex-wrap: wrap; */
     justify-content: flex-start;
     box-sizing: border-box;
+    /* min-inline-size: 1;
+    max-inline-size: 50; */
+    /* height: 31px; */
+    /* overflow: hidden; */
+    /* font-size: 12px;
+    line-height: 16px; */
 }
-.card .card-title h3{
+.textdf{
+    padding: 3% 6% 3% 6%;
+    min-width: 300px;
+    min-height: 100px;
+    border: none;
+    background: none;
+    word-wrap:break-word;
+}
+.h3asd{
     font-size: 1.2em;
     line-height: 1.2;
     padding: 0 3.5%;
@@ -169,13 +179,32 @@ body{
     width: auto;
     height: 20px;
     display: flex;
-    /* display: flex; */
-    /* flex-wrap: wrap; */
-    /* justify-content: right; */
-    /* box-sizing: border-box; */
 }
 .but:hover{
     display:block; 
      cursor: pointer;
     background-color: rgba(40, 60, 82, 0.377); 
+}
+/* .card input{
+    font-size: 1.2em;
+    line-height: 1.2;
+    padding: 5px 3.5%;
+    margin: 5;
+    justify-content: space-between;
+    background: rgba(104, 155, 210, 0.562);
+    padding: 3.5% 0 2.5% 0;
+    color: white;
+    text-transform: uppercase;
+    /* bottom: 0; 
+    width: 100%;
+    /* display: flex;
+    /* flex-wrap: wrap; */
+    /*justify-content: flex-start;
+    box-sizing: border-box; 
+    font: bold;
+    border: none;
+} */
+.inpt{
+    border: none;
+    background: none;
 }
