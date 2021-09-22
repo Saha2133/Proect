@@ -94,8 +94,13 @@ body{
     position: relative;
     margin-bottom: 20px;
     padding-bottom: 30px;
+/*    background: black;*/
+    /* background: #ced6a3c5; */
+    color: #363636;
+    /* text-decoration: beige; */
     box-shadow: rgba(0,0,0, 0.19) 0 0 18px 0; 
     border-radius: 4px;
+    /* opacity: 0.4; */
 }
 .card1:hover{
     opacity: 1;
@@ -108,16 +113,10 @@ body{
     width: 320px;
     height: 110px;
 }
-.cardPlus:hover{
-    cursor: pointer;
-}
 
 @media (max-width: 700px){
     .card{
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        /* width: 100%; */
+        width: 100%;
     }
 }
 @media (min-width: 700px){
@@ -140,9 +139,15 @@ body{
     /* bottom: 0; */
     width: 100%;
     display: flex;
+    /* flex-wrap: wrap; */
     justify-content: flex-start;
     box-sizing: border-box;
-    word-wrap:break-word;
+    /* min-inline-size: 1;
+    max-inline-size: 50; */
+    /* height: 31px; */
+    /* overflow: hidden; */
+    /* font-size: 12px;
+    line-height: 16px; */
 }
 .textdf{
     padding: 3% 6% 3% 6%;
@@ -153,15 +158,11 @@ body{
     word-wrap:break-word;
 }
 .h3asd{
-    word-break: break-word;
-    /* word-break: break-all; */
     font-size: 1.2em;
     line-height: 1.2;
     padding: 0 3.5%;
     margin: 0;
     justify-content: space-between;
-    border:none;
-    background: none;
 }
 .card .card-meta{
     min-height: 0;
@@ -186,7 +187,6 @@ body{
 }
 
 .inpt{
-    word-wrap:break-word;
     border: none;
     background: none;
 }
