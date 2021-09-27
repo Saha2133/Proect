@@ -43,7 +43,6 @@ function createCardTitle(card, parent, toggleEdit, createCheckList) {
     // input.elt.value()
     input.setAttribute('placeholder', 'Simple Note')
     input.setAttribute("maxlength", 50);
-    // input.setAttribute('value', 'Simple Note')
     // input.setAttribute('minlength',1);
     input.value = title;
     input.className = "inputh";
@@ -73,8 +72,9 @@ function createCardTitle(card, parent, toggleEdit, createCheckList) {
             input.style.display = 'block';
             titleElement.style.display = 'none';
             toggleEdit();
-            input.addEventListener('change', (e) => {
+            input.addEventListener('keyup', (e) => {
                 card.title = e.target.value;
+                console.log(card.title);
                 card.info = new Date().toLocaleString('en',
                 {
                   minute: 'numeric',
@@ -132,6 +132,7 @@ function removeCheckListFromCardData(checkList) {
         if (index === -1) return;
         card.checkLists.splice(index, 1);
     });
+    saveData();
 }
 
 class CheckList {
@@ -199,6 +200,7 @@ class CheckList {
 			this.title = titleElement.children[0].children[0].value;
 			titleElement.innerText = this.title;
 		});
+		titleElement.children[0].children[0].addEventListener("keyup", e => (this.title = e.target.value, saveData()));
 	}
 
 	addElement(data) {
@@ -213,17 +215,18 @@ class CheckList {
             checkbox = false;
             this.list.push({ id, label, checkbox });
         }
-        console.log(this.list);
 		const element = document.createElement('li');
 		element.setAttribute("id", id);
 		element.style.display = "flex";
 		element.style.justifyContent = "flex-start";
 		element.innerHTML = `
 			<i class="fa fa-times"></i>
-			<input type="checkbox" id="${id}">
+			<input type="checkbox" id="${id}" ${checkbox && "checked"}>
 			<label for="${id}">Новый элемент</label>
 		`;
 		[...this.container.children].find(elem => elem.classList.contains("list")).appendChild(element);
+		element.children[2].style.textDecoration = checkbox ? "line-through" : "none";
+
 		element.children[0].setAttribute("action", "deleteElement");
 		element.children[1].setAttribute("action", "editCheckState");
 		element.children[2].setAttribute("action", "editLabel");
@@ -242,14 +245,14 @@ class CheckList {
 	}
 
 	editCheckState(id) {
-		console.log(id);
 		const {elementData, element} = this.getElementInfoById(id);
-		console.log(element.children[1].checked, element.children[2].style.textDecoration);
-		element.children[2].style.textDecoration = element.children[1].checked ? "line-through" : "none";
+		const checked = !!element.children[1].checked;
+		elementData.checkbox = checked;
+		element.children[2].style.textDecoration = checked ? "line-through" : "none";
+		saveData();
 	}
 
 	editLabel(id) {
-		console.log(id);
 		const {elementData, element} = this.getElementInfoById(id);
 
 		element.children[2].style.display = "none";
@@ -331,7 +334,7 @@ function createCard(card) {
     // btn.className = 'but';
     // btn.innerHTML = '<i class="fa fa-trash" aria-hidden="true"></i>';
     // conteiner.appendChild(btn);
-    textarea.addEventListener('change', (e) => {
+    textarea.addEventListener('keyup', (e) => {
         card.text = e.target.value;
         card.info = new Date().toLocaleString('en',
         {
